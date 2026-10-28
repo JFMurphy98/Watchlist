@@ -9,6 +9,7 @@ import html
 import json
 import os
 import re
+import shutil
 import sys
 import time
 import unicodedata
@@ -42,6 +43,9 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, li
 JW_URL = "https://apis.justwatch.com/graphql"
 # Monetization types that cost nothing beyond a subscription (or nothing at all).
 STREAM_TYPES = {"FLATRATE", "ADS", "FREE"}
+# Digital storefronts (pay per film), with shorter names for the page.
+STORE_NAMES = {"Amazon Video": "Amazon", "Apple TV Store": "Apple", "Fandango At Home": "Fandango", "Google Play Movies": "Google Play"}
+DIGITAL = {"SD", "HD", "_4K"}
 CHANNEL_SUFFIX = re.compile(r"\s+(Amazon Channel|Apple TV Channel|Roku Premium Channel)$", re.I)
 
 
@@ -58,7 +62,7 @@ query Search($country: Country!, $language: Language!, $first: Int!, $filter: Ti
         title originalReleaseYear fullPath posterUrl
       }
       offers(country: $country, platform: WEB) {
-        monetizationType standardWebURL
+        monetizationType presentationType standardWebURL retailPriceValue
         package { clearName technicalName }
       }
     } }
@@ -151,8 +155,22 @@ def service_for(clear_name):
 
 
 def summarize(node):
-    """Collapse JustWatch offers into mine / free / other subs / rent / buy."""
+    """Collapse JustWatch offers into mine / free / other subs / rent / buy.
+
+    mine = included with our subscriptions at no extra cost. rent/buy = pay per
+    film, cheapest digital price per store.
+    """
     mine, free, other, rent, buy = {}, {}, {}, {}, {}
+
+    def cheapest(bucket, o):
+        if o["presentationType"] not in DIGITAL:
+            return
+        store = STORE_NAMES.get(o["package"]["clearName"], o["package"]["clearName"])
+        price = o.get("retailPriceValue")
+        cur = bucket.get(store)
+        if cur is None or (price is not None and (cur["price"] is None or price < cur["price"])):
+            bucket[store] = {"name": store, "url": o["standardWebURL"], "price": price}
+
     for o in node["offers"]:
         name, kind, link = o["package"]["clearName"], o["monetizationType"], o["standardWebURL"]
         if kind in STREAM_TYPES:
@@ -164,17 +182,21 @@ def summarize(node):
             else:
                 other.setdefault(clean(name), link)
         elif kind == "RENT":
-            rent.setdefault(name, link)
-        elif kind == "BUY" and "DVD" not in name:
-            buy.setdefault(name, link)
+            cheapest(rent, o)
+        elif kind == "BUY":
+            cheapest(buy, o)
     order = list(SERVICES)
     return {
         "mine": [{"name": k, "url": v} for k, v in sorted(mine.items(), key=lambda kv: order.index(kv[0]))],
         "free": [{"name": k, "url": v} for k, v in sorted(free.items())],
         "other": [{"name": k, "url": v} for k, v in sorted(other.items())],
-        "rent": [{"name": k, "url": v} for k, v in sorted(rent.items())],
-        "buy": [{"name": k, "url": v} for k, v in sorted(buy.items())],
+        "rent": sorted(rent.values(), key=by_price),
+        "buy": sorted(buy.values(), key=by_price),
     }
+
+
+def by_price(o):
+    return (o["price"] is None, o["price"] or 0, o["name"])
 
 
 def poster(url):
@@ -235,6 +257,9 @@ def main():
     page = page.replace("__DATA__", json.dumps(data).replace("</", "<\\/")).replace("__REFRESH_URL__", refresh)
     with open(os.path.join(out_dir, "index.html"), "w") as fh:
         fh.write(page)
+    static = os.path.join(here, "static")
+    for name in os.listdir(static):
+        shutil.copy(os.path.join(static, name), out_dir)
     print(f"Wrote {out_dir}/index.html ({len(data['films'])} films)", file=sys.stderr)
 
 

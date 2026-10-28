@@ -13,6 +13,7 @@ GitHub Actions (`.github/workflows/refresh.yml`) rebuilds the page every Sunday,
 
 - Lists and streaming services: top of `watchlist.py` (`LISTS`, `SERVICES`)
 - Look and Easter eggs: `template.html`
+- Home-screen icon and app manifest: `static/`
 - Run locally: `python3 watchlist.py` writes `site/index.html` (Python 3, no packages needed)
 
 ## One-time setup

@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f0c26">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="J&amp;M Movies">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
 <title>What Are Jacob &amp; Mahima Going to Watch?</title>
 <meta name="description" content="Jacob and Mahima's Letterboxd watchlists, matched to the streaming services they have.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +48,7 @@
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
 body {
   margin: 0;
   background-color: var(--linen);
@@ -64,7 +72,7 @@ button { font: inherit; color: inherit; }
 /* ───────── Marquee header ───────── */
 .theatre {
   position: relative; overflow: hidden; color: #fdf3dc; text-align: center;
-  padding: 34px 16px 0;
+  padding: calc(34px + env(safe-area-inset-top)) 16px 0;
   background:
     radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 51%),
     radial-gradient(1px 1px at 27% 8%, #fff 50%, transparent 51%),
@@ -87,7 +95,7 @@ button { font: inherit; color: inherit; }
 .curtain.l { left: 0; border-bottom-right-radius: 100% 30%; }
 .curtain.r { right: 0; border-bottom-left-radius: 100% 30%; }
 .valance {
-  position: absolute; top: 0; left: 0; right: 0; height: 22px; z-index: 4;
+  position: absolute; top: env(safe-area-inset-top); left: 0; right: 0; height: 22px; z-index: 4;
   background: linear-gradient(#5e0b19, #9a1730);
   border-bottom: 2px solid var(--gold);
   -webkit-mask: radial-gradient(circle at 50% 100%, transparent 0 8px, #000 9px) 0 0 / 28px 22px repeat-x;
@@ -147,9 +155,9 @@ h1 em {
 .barrel i { flex: none; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle, #fff 0 45%, #cfcfcf 60%, #8a8a8a 100%); box-shadow: 0 0 6px rgba(255,255,255,.4); }
 
 /* ───────── Programme ───────── */
-main { max-width: 1120px; margin: 0 auto; padding: 0 16px 40px; }
+main { max-width: 1120px; margin: 0 auto; padding: 0 max(16px, env(safe-area-inset-right)) 40px max(16px, env(safe-area-inset-left)); }
 .controls {
-  position: sticky; top: 0; z-index: 20; margin: 0 -16px; padding: 12px 16px;
+  position: sticky; top: 0; z-index: 20; margin: 0 -16px; padding: calc(12px + env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 12px max(16px, env(safe-area-inset-left));
   background: color-mix(in srgb, var(--linen) 92%, transparent);
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--rule);
@@ -198,7 +206,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 16px 40px; }
   background: linear-gradient(135deg, #f6e2a4, #b8913d 40%, #7a5a1e 60%, #e8c879);
   box-shadow: var(--shadow); transition: transform .2s;
 }
-.frame:hover { transform: translateY(-4px) rotate(-.6deg); }
+@media (hover: hover) { .frame:hover { transform: translateY(-4px) rotate(-.6deg); } }
 .frame img, .frame .blank { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 1px; background: #2a1d16; }
 .frame .blank { display: grid; place-items: center; padding: 10px; text-align: center; color: #f2d68c; font: 400 15px/1.15 "Limelight", serif; }
 .stub {
@@ -222,6 +230,11 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 16px 40px; }
 .where a.mine { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .where a:hover { color: var(--crimson); }
 .where a.mine:hover { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+.where .lbl { flex-basis: 100%; font: 600 9.5px/1 "Bodoni Moda", serif; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin: 2px 0 1px; }
+.where .lbl.inc { color: var(--sage); }
+.where .lbl.inc::before { content: "✓ "; }
+.where a.pay { border-style: dashed; }
+.where a.pay b { color: var(--crimson); font-weight: 800; margin-left: 3px; }
 .note { margin: 6px 0 0; font: italic 500 14px/1.25 "Cormorant Garamond", serif; color: var(--muted); }
 .empty { text-align: center; font: italic 500 19px/1.4 "Cormorant Garamond", serif; color: var(--muted); padding: 10px 0 20px; }
 
@@ -285,9 +298,9 @@ dialog[open] .feature { animation: iris .9s cubic-bezier(.2,.8,.2,1); }
 /* ───────── Meadow & The End ───────── */
 .meadow { position: relative; margin-top: 50px; height: 140px; color: var(--sage); }
 .meadow svg { position: absolute; bottom: 0; left: 0; width: 100%; height: 140px; }
-.paw { position: absolute; bottom: 14px; right: 12%; width: 22px; height: 22px; border: 0; padding: 0; background: none; cursor: pointer; opacity: .7; }
+.paw { position: absolute; bottom: 3px; right: 12%; width: 44px; height: 44px; display: grid; place-items: center; border: 0; padding: 0; background: none; cursor: pointer; opacity: .7; }
 .paw svg { position: static; width: 22px; height: 22px; fill: var(--panther); }
-.theend { text-align: center; padding: 6px 16px 46px; background: color-mix(in srgb, var(--sage) 22%, var(--linen)); }
+.theend { text-align: center; padding: 6px 16px calc(46px + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--sage) 22%, var(--linen)); }
 .fin-row { display: inline-flex; align-items: flex-end; gap: 12px; }
 .theend .fin { font: 400 clamp(46px, 9vw, 72px)/1 "Pinyon Script", cursive; color: var(--ink); }
 .top { width: 34px; height: 44px; margin-bottom: 8px; border: 0; padding: 0; background: none; cursor: pointer; transform-origin: 50% 100%; animation: wobble .9s ease-in-out infinite; }
@@ -299,7 +312,7 @@ dialog[open] .feature { animation: iris .9s cubic-bezier(.2,.8,.2,1); }
 
 /* ───────── Easter eggs ───────── */
 .toast {
-  position: fixed; left: 50%; bottom: 24px; z-index: 120; transform: translate(-50%, 30px); opacity: 0; pointer-events: none;
+  position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); z-index: 120; transform: translate(-50%, 30px); opacity: 0; pointer-events: none;
   width: max-content; max-width: calc(100vw - 32px); text-align: center; padding: 12px 20px;
   background: #0b0806; color: #ff5a6b; border: 1px solid var(--gold); box-shadow: 0 10px 40px rgba(0,0,0,.5);
   font: italic 500 20px/1.25 "Bodoni Moda", serif; transition: opacity .35s, transform .35s;
@@ -363,6 +376,18 @@ body.telekinesis .film:nth-child(3n+2) .frame { animation-delay: -1.6s; }
 main.timewarp { animation: timewarp 2.4s ease-in-out; }
 @keyframes timewarp { 0%,100% { transform: none; } 20% { transform: translateX(-60px); } 45% { transform: translateX(40px); } 65% { transform: translateX(0) scale(1.03); } 80% { transform: rotate(-2deg); } }
 
+@media (max-width: 560px) {
+  .hills .lamp { display: none; }
+}
+@media (max-width: 400px) {
+  .ticket .long { display: none; }
+  .ticket { letter-spacing: .12em; padding: 11px 18px; font-size: 12px; }
+}
+@media (pointer: coarse) {
+  .where a { padding: 8px 8px; }
+  .chip { min-height: 40px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .gunbarrel, .bagel, .pawprint { display: none; }
@@ -376,8 +401,8 @@ main.timewarp { animation: timewarp 2.4s ease-in-out; }
     <path fill="#2e1a3d" d="M0 110V70C160 30 320 20 470 46s250 40 380 12 260-40 350-18v70z"/>
     <path fill="#1d1230" d="M0 110V92c200-30 420-34 620-12s400 10 580-14v44z"/>
     <!-- the lamppost on the hill -->
-    <g fill="#120b1f"><rect x="905" y="30" width="3" height="40"/><rect x="900" y="68" width="13" height="4" rx="1"/><path d="M901 30h11l-2-7h-7z"/></g>
-    <circle cx="906.5" cy="26" r="3" fill="#ffe7a8"/><circle cx="906.5" cy="26" r="9" fill="#ffe7a8" opacity=".25"/>
+    <g class="lamp"><g fill="#120b1f"><rect x="905" y="30" width="3" height="40"/><rect x="900" y="68" width="13" height="4" rx="1"/><path d="M901 30h11l-2-7h-7z"/></g>
+    <circle cx="906.5" cy="26" r="3" fill="#ffe7a8"/><circle cx="906.5" cy="26" r="9" fill="#ffe7a8" opacity=".25"/></g>
   </svg>
   <div class="valance"></div>
   <div class="curtain l"></div><div class="curtain r"></div>
@@ -395,7 +420,7 @@ main.timewarp { animation: timewarp 2.4s ease-in-out; }
     </button>
     <a class="ticket red" id="refresh" href="__REFRESH_URL__" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>
-      Refresh the programme
+      Refresh<span class="long"> the programme</span>
     </a>
     <p class="updated" id="updated"></p>
   </div>
@@ -525,13 +550,23 @@ function picks(f) {
 function links(list, cls = "", max = 99) {
   return list.slice(0, max).map(o => `<a class="${cls}" href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.name)}</a>`).join("");
 }
+const money = p => p == null ? "" : "$" + (Number.isInteger(p) ? p : p.toFixed(2));
+const cheapest = list => list?.find(o => o.price != null)?.price;
+function priced(list, max) {
+  return list.slice(0, max).map(o => `<a class="pay" href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.name)}<b>${money(o.price)}</b></a>`).join("");
+}
 function card(f, kind) {
   const img = f.poster ? `<img loading="lazy" src="${esc(f.poster)}" alt="" data-t="${esc(f.title)}" onerror="posterFail(this)">` : `<span class="blank">${esc(f.title)}</span>`;
   let where = "", note = "";
-  if (kind === "mine") where = links(f.mine, "mine");
-  if (kind === "free") where = links(f.free, "", 4);
-  if (kind === "other") where = links(f.other, "", 4);
-  if (kind === "box") { where = links(f.rent.length ? f.rent : f.buy, "", 3); note = f.rent.length ? "to rent" : "to buy"; }
+  const rent = cheapest(f.rent), buy = cheapest(f.buy);
+  if (kind === "mine") where = `<span class="lbl inc">Included, no extra charge</span>` + links(f.mine, "mine");
+  if (kind === "free") where = `<span class="lbl">Free with ads</span>` + links(f.free, "", 4);
+  if (kind === "other") where = `<span class="lbl">Needs a subscription we don't have</span>` + links(f.other, "", 4);
+  if (kind === "free" || kind === "other") note = rent != null ? `or rent from ${money(rent)}` : "";
+  if (kind === "box") {
+    if (f.rent.length) where += `<span class="lbl">Rent</span>` + priced(f.rent, 3);
+    if (f.buy.length) where += `<span class="lbl">Buy</span>` + priced(f.buy, f.rent.length ? 1 : 3);
+  }
   if (isPanther(f)) note = "Mahima's Steve Martin" + (note ? " · " + note : "");
   return `<article class="film${isPanther(f) ? " panther" : ""}">
     <a class="frame" href="${esc(f.justwatch || f.letterboxd)}" target="_blank" rel="noopener" aria-label="${esc(f.title)} on JustWatch">${img}</a>
@@ -543,14 +578,15 @@ function card(f, kind) {
     </div>
   </article>`;
 }
+const byRent = (a, b) => ((cheapest(a.rent) ?? cheapest(a.buy) ?? 999) - (cheapest(b.rent) ?? cheapest(b.buy) ?? 999)) || byPick(a, b);
 function grid(films, kind) {
-  return films.length ? `<div class="grid">${films.sort(byPick).map(f => card(f, kind)).join("")}</div>` : `<p class="empty">Nothing on this reel.</p>`;
+  return films.length ? `<div class="grid">${films.sort(kind === "box" ? byRent : byPick).map(f => card(f, kind)).join("")}</div>` : `<p class="empty">Nothing on this reel.</p>`;
 }
 function posterFail(img) {
   const s = document.createElement("span"); s.className = "blank"; s.textContent = img.dataset.t; img.replaceWith(s);
 }
 const head = (no, title, sub) => `<div class="reel-head"><span class="reel-no">${no}</span><h2>${title}</h2><p class="sub">${sub}</p></div>`;
-const fold = (no, title, sub, body) => SPRIG + `<details class="reel"><summary>${head(no, title, sub)}<div style="text-align:center"><span class="toggle"><span class="o">Show the bill</span><span class="c">Hide</span></span></div></summary><div style="margin-top:22px">${body}</div></details>`;
+const fold = (no, title, sub, body, open) => SPRIG + `<details class="reel"${open ? " open" : ""}><summary>${head(no, title, sub)}<div style="text-align:center"><span class="toggle"><span class="o">Show the bill</span><span class="c">Hide</span></span></div></summary><div style="margin-top:22px">${body}</div></details>`;
 
 function render() {
   const films = visible();
@@ -565,7 +601,7 @@ function render() {
   if (state.svc && !counts[state.svc]) state.svc = null;
   const shown = state.svc ? mine.filter(f => f.mine.some(m => m.name === state.svc)) : mine;
 
-  let html = SPRIG + `<section class="reel">${head("Reel I", "Now Showing", `<b>${mine.length}</b> on our services, ready tonight`)}
+  let html = SPRIG + `<section class="reel">${head("Reel I", "Now Showing", `<b>${mine.length}</b> included with our subscriptions. No extra charge, ready tonight`)}
     <div class="chips" role="group" aria-label="Filter by service">
       <button class="chip" type="button" data-svc="" aria-pressed="${!state.svc}">All<span>${mine.length}</span></button>
       ${DATA.services.filter(s => counts[s]).map(s => `<button class="chip" type="button" data-svc="${esc(s)}" aria-pressed="${state.svc === s}">${esc(s)}<span>${counts[s]}</span></button>`).join("")}
@@ -573,7 +609,7 @@ function render() {
     ${grid(shown, "mine")}</section>`;
   html += SPRIG + `<section class="reel">${head("Reel II", "Free Admission", `<b>${free.length}</b> free with ads elsewhere. Kanopy &amp; Hoopla just need a library card`)}${grid(free, "free")}</section>`;
   html += fold("Reel III", "Playing Across Town", `<b>${other.length}</b> on services we don't have`, grid(other, "other"));
-  html += fold("Reel IV", "At the Box Office", `<b>${box.length}</b> to rent or buy only`, grid(box, "box"));
+  html += fold("Reel IV", "At the Box Office", `<b>${box.length}</b> cost extra to rent or buy. Amazon &amp; Apple list nearly everything, but these aren't included in Prime or Apple TV`, grid(box, "box"), true);
   html += SPRIG + `<section class="reel"><div class="wanted">
       <div class="w">WANTED</div>
       <div class="w2">Not streaming anywhere &mdash; yet</div>
