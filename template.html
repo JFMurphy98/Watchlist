@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Are Jacob &amp; Mahima Going to Watch?</title>
+<meta name="description" content="Jacob and Mahima's Letterboxd watchlists, matched to the streaming services they have.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,800;1,6..96,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Limelight&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root {
+  --linen: #f4ead6;
+  --paper: #fcf6ea;
+  --ink: #2b1d16;
+  --muted: #6e5848;
+  --rule: #d9c7a5;
+  --crimson: #b3122e;
+  --gold: #b8913d;
+  --gold-hi: #f2d68c;
+  --sage: #6f8b64;
+  --rose: #b97878;
+  --panther: #e8609a;
+  --shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 10px 24px -14px rgba(43,29,22,.55);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --linen: #16121f; --paper: #221c2e; --ink: #f2e8d4; --muted: #b6a58c; --rule: #3d3348;
+    --crimson: #e0435a; --sage: #9cb68f; --rose: #d99a9a; --gold: #d4ae5c;
+    --shadow: 0 10px 24px -12px rgba(0,0,0,.8);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --linen: #16121f; --paper: #221c2e; --ink: #f2e8d4; --muted: #b6a58c; --rule: #3d3348;
+  --crimson: #e0435a; --sage: #9cb68f; --rose: #d99a9a; --gold: #d4ae5c;
+  --shadow: 0 10px 24px -12px rgba(0,0,0,.8);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background-color: var(--linen);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(120,90,50,.035) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(120,90,50,.035) 0 1px, transparent 1px 3px);
+  color: var(--ink);
+  font: 500 18px/1.45 "Cormorant Garamond", Georgia, serif;
+  overflow-x: hidden;
+}
+/* film grain */
+body::after {
+  content: ""; position: fixed; inset: -50%; pointer-events: none; z-index: 50; opacity: .09;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.2s steps(6) infinite;
+}
+@keyframes grain { 0%{transform:translate(0,0)} 20%{transform:translate(-3%,2%)} 40%{transform:translate(2%,-4%)} 60%{transform:translate(-4%,-1%)} 80%{transform:translate(3%,3%)} 100%{transform:translate(0,0)} }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+
+/* ───────── Marquee header ───────── */
+.theatre {
+  position: relative; overflow: hidden; color: #fdf3dc; text-align: center;
+  padding: 34px 16px 0;
+  background:
+    radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 27% 8%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 41% 26%, #ffe 50%, transparent 51%),
+    radial-gradient(1px 1px at 63% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 78% 22%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 88% 9%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 52% 5%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 6% 40%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 94% 38%, #fff 50%, transparent 51%),
+    linear-gradient(180deg, #0f0c26 0%, #2b1e57 38%, #6b3577 66%, #c5607a 88%, #e9906f 100%);
+}
+/* hills at dusk, La La Land */
+.hills { position: absolute; left: 0; right: 0; bottom: 0; height: 110px; width: 100%; z-index: 0; pointer-events: none; }
+.curtain {
+  position: absolute; top: 0; bottom: 0; width: clamp(24px, 8vw, 120px); z-index: 3;
+  background: repeating-linear-gradient(90deg, #4a0814 0 6px, #8e1428 14px, #b81d36 18px, #8e1428 22px, #4a0814 30px);
+  box-shadow: 0 0 30px rgba(0,0,0,.6);
+}
+.curtain.l { left: 0; border-bottom-right-radius: 100% 30%; }
+.curtain.r { right: 0; border-bottom-left-radius: 100% 30%; }
+.valance {
+  position: absolute; top: 0; left: 0; right: 0; height: 22px; z-index: 4;
+  background: linear-gradient(#5e0b19, #9a1730);
+  border-bottom: 2px solid var(--gold);
+  -webkit-mask: radial-gradient(circle at 50% 100%, transparent 0 8px, #000 9px) 0 0 / 28px 22px repeat-x;
+          mask: radial-gradient(circle at 50% 100%, transparent 0 8px, #000 9px) 0 0 / 28px 22px repeat-x;
+}
+.marquee {
+  position: relative; z-index: 2; display: inline-block; max-width: min(820px, calc(100% - 2*clamp(24px, 8vw, 120px) + 28px));
+  margin: 14px auto 0; padding: 26px clamp(14px, 4vw, 48px) 22px;
+  background: linear-gradient(#1a1410, #0b0806);
+  border: 3px solid var(--gold-hi); border-radius: 6px;
+  box-shadow: 0 0 0 6px #2a1d10, 0 0 0 8px var(--gold), 0 0 50px rgba(242,214,140,.35), 0 30px 60px -20px #000;
+}
+.marquee .bulbs { position: absolute; left: 10px; right: 10px; height: 12px; }
+.marquee .bulbs.t { top: 6px; } .marquee .bulbs.b { bottom: 6px; }
+.bulbs {
+  background: radial-gradient(circle, #fff7d6 0 2.5px, #f2c35a 3.5px, transparent 5px) 0 50% / 18px 12px repeat-x;
+  filter: drop-shadow(0 0 4px #ffcf6a);
+  animation: chase 1.1s steps(3) infinite;
+}
+@keyframes chase { to { background-position: 18px 50%; } }
+.now { font: 400 13px/1 "Limelight", serif; letter-spacing: .5em; color: var(--gold-hi); margin: 6px 0 12px; }
+h1 {
+  margin: 0; font: 400 clamp(28px, 6.4vw, 62px)/1.04 "Limelight", "Bodoni Moda", serif;
+  color: #fff6dd; text-shadow: 0 0 18px rgba(255,214,120,.55), 0 2px 0 #7a5418;
+}
+h1 .amp { font: 400 1.25em/0 "Pinyon Script", cursive; color: var(--gold-hi); padding: 0 .06em; }
+h1 em {
+  display: block; margin-top: 8px; font: italic 500 .62em/1.1 "Bodoni Moda", serif;
+  color: #ff5a6b; text-shadow: 0 0 12px rgba(255,60,80,.7), 0 0 30px rgba(255,40,70,.4);
+}
+.billing { margin: 14px 0 0; font: italic 500 16px/1.3 "Cormorant Garamond", serif; color: #e9d9b8; }
+.billing b { font: 600 12px/1 "Bodoni Moda", serif; letter-spacing: .18em; text-transform: uppercase; font-style: normal; color: var(--gold-hi); }
+
+.boxoffice {
+  position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center;
+  margin: 26px auto 0; padding: 0 clamp(24px, 8vw, 120px) 34px;
+}
+.ticket {
+  --c: var(--gold-hi);
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none;
+  padding: 11px 22px; border: 0; min-height: 44px;
+  font: 800 13px/1 "Bodoni Moda", serif; letter-spacing: .2em; text-transform: uppercase;
+  color: #2a1609; background: var(--c);
+  -webkit-mask: radial-gradient(circle 7px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 7px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+          mask: radial-gradient(circle 7px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 7px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+  transition: transform .15s, filter .15s;
+}
+.ticket:hover { transform: translateY(-2px) rotate(-1deg); filter: brightness(1.08); }
+.ticket.red { --c: #e23a4f; color: #fff4e0; }
+.ticket svg { width: 16px; height: 16px; }
+.updated { width: 100%; text-align: center; font: italic 500 15px/1.3 "Cormorant Garamond", serif; color: #f4dfd0; margin: 2px 0 0; }
+
+/* gun barrel strip */
+.barrel { display: flex; justify-content: center; gap: 10px; padding: 12px 0; background: #0b0806; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); cursor: pointer; overflow: hidden; }
+.barrel i { flex: none; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle, #fff 0 45%, #cfcfcf 60%, #8a8a8a 100%); box-shadow: 0 0 6px rgba(255,255,255,.4); }
+
+/* ───────── Programme ───────── */
+main { max-width: 1120px; margin: 0 auto; padding: 0 16px 40px; }
+.controls {
+  position: sticky; top: 0; z-index: 20; margin: 0 -16px; padding: 12px 16px;
+  background: color-mix(in srgb, var(--linen) 92%, transparent);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between;
+}
+.seg { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; max-width: 100%; }
+.seg button {
+  border: 0; background: none; cursor: pointer; padding: 7px 12px; min-height: 38px;
+  font: 600 11.5px/1 "Bodoni Moda", serif; letter-spacing: .1em; text-transform: uppercase;
+}
+.seg button + button { border-left: 1.5px solid var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.search {
+  flex: 1 1 200px; max-width: 320px; min-width: 0; padding: 8px 14px; min-height: 38px;
+  border: 1.5px solid var(--ink); border-radius: 999px; background: var(--paper); color: var(--ink);
+  font: italic 500 17px/1 "Cormorant Garamond", serif;
+}
+.search::placeholder { color: var(--muted); }
+
+.sprig { display: block; margin: 36px auto 4px; width: 180px; height: 34px; color: var(--sage); }
+.reel { margin-top: 8px; }
+.reel-head { text-align: center; margin: 0 0 18px; }
+.reel-no { display: inline-block; font: 600 12px/1 "Bodoni Moda", serif; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); }
+.reel-no::before, .reel-no::after { content: "✦"; color: var(--rose); margin: 0 10px; letter-spacing: 0; }
+.reel h2 {
+  margin: 6px 0 0; font: 800 clamp(28px, 5vw, 46px)/1 "Bodoni Moda", serif; text-transform: uppercase; letter-spacing: .02em;
+  color: var(--crimson);
+}
+.reel .sub { margin: 6px 0 0; font: italic 500 18px/1.3 "Cormorant Garamond", serif; color: var(--muted); }
+.reel .sub b { font-style: normal; color: var(--ink); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 0 22px; }
+.chip {
+  cursor: pointer; border: 1.5px solid var(--gold); background: var(--paper); border-radius: 3px;
+  padding: 6px 10px; min-height: 34px; font: 600 12px/1 "Bodoni Moda", serif; letter-spacing: .08em; text-transform: uppercase;
+}
+.chip span { color: var(--muted); font-weight: 500; margin-left: 4px; }
+.chip[aria-pressed="true"] { background: var(--gold); color: #1e1408; border-color: var(--gold); }
+.chip[aria-pressed="true"] span { color: #3d2a10; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); gap: 26px 20px; }
+@media (max-width: 420px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; } }
+.film { position: relative; display: flex; flex-direction: column; min-width: 0; }
+.frame {
+  position: relative; display: block; aspect-ratio: 2 / 3; padding: 6px; border-radius: 2px;
+  background: linear-gradient(135deg, #f6e2a4, #b8913d 40%, #7a5a1e 60%, #e8c879);
+  box-shadow: var(--shadow); transition: transform .2s;
+}
+.frame:hover { transform: translateY(-4px) rotate(-.6deg); }
+.frame img, .frame .blank { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 1px; background: #2a1d16; }
+.frame .blank { display: grid; place-items: center; padding: 10px; text-align: center; color: #f2d68c; font: 400 15px/1.15 "Limelight", serif; }
+.stub {
+  position: relative; margin-top: -2px; padding: 10px 10px 11px; background: var(--paper);
+  border: 1px solid var(--rule); border-top: 2px dashed var(--rule); box-shadow: var(--shadow); flex: 1;
+}
+.stub h3 { margin: 0; font: 800 15px/1.15 "Bodoni Moda", serif; overflow-wrap: anywhere; }
+.stub h3 a { text-decoration: none; }
+.stub h3 a:hover { text-decoration: underline; text-decoration-color: var(--crimson); }
+.stub .yr { font: italic 500 15px/1 "Cormorant Garamond", serif; color: var(--muted); margin-left: 3px; }
+.picks { display: flex; flex-wrap: wrap; gap: 4px; margin: 7px 0 0; }
+.pick { font: italic 600 14px/1 "Cormorant Garamond", serif; padding: 3px 7px 4px; border-radius: 999px; }
+.pick.Jacob { background: #1b1b1b; color: #f2d68c; }
+.pick.Mahima { background: color-mix(in srgb, var(--sage) 22%, var(--paper)); color: var(--sage); border: 1px solid var(--sage); }
+.pick.both { background: var(--crimson); color: #fff3e4; }
+.where { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 0; }
+.where a {
+  font: 600 10.5px/1 "Bodoni Moda", serif; letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+  padding: 5px 6px; border: 1px solid currentColor; border-radius: 2px; color: var(--ink);
+}
+.where a.mine { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.where a:hover { color: var(--crimson); }
+.where a.mine:hover { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+.note { margin: 6px 0 0; font: italic 500 14px/1.25 "Cormorant Garamond", serif; color: var(--muted); }
+.empty { text-align: center; font: italic 500 19px/1.4 "Cormorant Garamond", serif; color: var(--muted); padding: 10px 0 20px; }
+
+/* Mahima's Steve Martin: the Pink Panther always gets the pink carpet */
+.film.panther .frame { background: linear-gradient(135deg, #ffd3e6, #e8609a 45%, #9c2c63 60%, #ffb3d1); }
+.film.panther .stub { border-color: var(--panther); border-top-color: var(--panther); }
+.film.panther .stub::after {
+  content: ""; position: absolute; right: 8px; top: 8px; width: 18px; height: 18px; opacity: .85;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e8609a'%3E%3Cellipse cx='12' cy='16' rx='5.5' ry='4.5'/%3E%3Cellipse cx='5' cy='10' rx='2.2' ry='2.8'/%3E%3Cellipse cx='9.3' cy='5.6' rx='2.2' ry='2.8'/%3E%3Cellipse cx='14.7' cy='5.6' rx='2.2' ry='2.8'/%3E%3Cellipse cx='19' cy='10' rx='2.2' ry='2.8'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+details.reel > summary { list-style: none; cursor: pointer; }
+details.reel > summary::-webkit-details-marker { display: none; }
+.toggle { display: inline-block; margin-top: 2px; font: 600 12px/1 "Bodoni Moda", serif; letter-spacing: .2em; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 3px; }
+details.reel[open] > summary .toggle .o { display: none; }
+details.reel:not([open]) > summary .toggle .c { display: none; }
+
+/* Wanted poster (Butch Cassidy) */
+.wanted {
+  max-width: 760px; margin: 0 auto; padding: 26px clamp(16px, 4vw, 40px) 30px; text-align: center; color: #3b2612;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(255,255,255,.35), transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(120,70,20,.25), transparent 60%),
+    #e3c48f;
+  border: 1px solid #a57a3f; box-shadow: 0 18px 30px -18px rgba(0,0,0,.6), inset 0 0 50px rgba(110,60,15,.35);
+  transform: rotate(-.6deg);
+}
+.wanted .w { font: 400 clamp(44px, 10vw, 84px)/.9 "Limelight", serif; letter-spacing: .08em; }
+.wanted .w2 { font: 800 13px/1.3 "Bodoni Moda", serif; letter-spacing: .35em; text-transform: uppercase; margin: 10px 0 18px; }
+.wanted ul { list-style: none; margin: 0; padding: 0; columns: 2 220px; column-gap: 28px; text-align: left; }
+.wanted li { break-inside: avoid; padding: 5px 0; border-bottom: 1px dashed rgba(59,38,18,.35); font: 600 17px/1.2 "Cormorant Garamond", serif; }
+.wanted li a { text-decoration: none; }
+.wanted li a:hover { text-decoration: underline; }
+.wanted li .yr { color: #6d4c2a; font-style: italic; }
+.wanted .miss { display: block; font: italic 500 14px/1.2 "Cormorant Garamond", serif; color: #6d4c2a; }
+.wanted .reward { margin: 18px 0 0; font: italic 500 17px/1.3 "Cormorant Garamond", serif; }
+
+/* ───────── Tonight's feature dialog (gun-barrel iris) ───────── */
+dialog { border: 0; padding: 0; background: transparent; max-width: min(440px, calc(100vw - 32px)); width: 100%; color: #fdf3dc; }
+dialog::backdrop { background: rgba(5,3,10,.88); }
+dialog[open] .feature { animation: iris .9s cubic-bezier(.2,.8,.2,1); }
+@keyframes iris { from { clip-path: circle(0% at 50% 50%); } to { clip-path: circle(110% at 50% 50%); } }
+.feature {
+  position: relative; text-align: center; padding: 26px 22px 24px; border-radius: 4px;
+  background: radial-gradient(circle at 50% 30%, #3a1022, #0b0806 70%);
+  border: 3px solid var(--gold-hi); box-shadow: 0 0 0 6px #2a1d10, 0 0 0 8px var(--gold), 0 0 60px rgba(242,214,140,.3);
+}
+.feature .now { margin-top: 2px; }
+.feature img { width: 170px; max-width: 60%; aspect-ratio: 2/3; object-fit: cover; border: 5px solid var(--gold-hi); box-shadow: 0 10px 30px #000; }
+.feature h3 { margin: 14px 0 2px; font: 400 28px/1.05 "Limelight", serif; color: #fff6dd; text-shadow: 0 0 14px rgba(255,214,120,.5); }
+.feature .yr { font: italic 500 18px/1 "Cormorant Garamond", serif; color: #e9d9b8; }
+.feature .picks { justify-content: center; }
+.feature .where { justify-content: center; margin-top: 14px; }
+.feature .where a { color: #fdf3dc; font-size: 12px; padding: 8px 10px; }
+.feature .where a.mine { background: var(--gold-hi); color: #1e1408; border-color: var(--gold-hi); }
+.feature .quote { margin: 16px 0 0; font: italic 500 16px/1.3 "Cormorant Garamond", serif; color: #d9c6a3; }
+.feature .quote cite { display: block; font: 600 10.5px/1.4 "Bodoni Moda", serif; letter-spacing: .2em; text-transform: uppercase; font-style: normal; color: var(--gold-hi); margin-top: 3px; }
+.feature .row { display: flex; justify-content: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.x { position: absolute; top: 8px; right: 10px; background: none; border: 0; color: var(--gold-hi); font-size: 26px; cursor: pointer; width: 40px; height: 40px; }
+
+/* ───────── Meadow & The End ───────── */
+.meadow { position: relative; margin-top: 50px; height: 140px; color: var(--sage); }
+.meadow svg { position: absolute; bottom: 0; left: 0; width: 100%; height: 140px; }
+.paw { position: absolute; bottom: 14px; right: 12%; width: 22px; height: 22px; border: 0; padding: 0; background: none; cursor: pointer; opacity: .7; }
+.paw svg { position: static; width: 22px; height: 22px; fill: var(--panther); }
+.theend { text-align: center; padding: 6px 16px 46px; background: color-mix(in srgb, var(--sage) 22%, var(--linen)); }
+.fin-row { display: inline-flex; align-items: flex-end; gap: 12px; }
+.theend .fin { font: 400 clamp(46px, 9vw, 72px)/1 "Pinyon Script", cursive; color: var(--ink); }
+.top { width: 34px; height: 44px; margin-bottom: 8px; border: 0; padding: 0; background: none; cursor: pointer; transform-origin: 50% 100%; animation: wobble .9s ease-in-out infinite; }
+.top svg { width: 100%; height: 100%; }
+.top .spin { transform-origin: 13px 14px; animation: squash .25s linear infinite; }
+@keyframes wobble { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes squash { 0%,100% { transform: scaleX(1); } 50% { transform: scaleX(.6); } }
+.theend p { margin: 8px 0 0; font: italic 500 15px/1.4 "Cormorant Garamond", serif; color: var(--muted); }
+
+/* ───────── Easter eggs ───────── */
+.toast {
+  position: fixed; left: 50%; bottom: 24px; z-index: 120; transform: translate(-50%, 30px); opacity: 0; pointer-events: none;
+  width: max-content; max-width: calc(100vw - 32px); text-align: center; padding: 12px 20px;
+  background: #0b0806; color: #ff5a6b; border: 1px solid var(--gold); box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  font: italic 500 20px/1.25 "Bodoni Moda", serif; transition: opacity .35s, transform .35s;
+}
+.toast cite { display: block; font: 600 10.5px/1.4 "Bodoni Moda", serif; letter-spacing: .25em; text-transform: uppercase; font-style: normal; color: var(--gold-hi); margin-top: 4px; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast.pink { color: #ff9cc6; border-color: var(--panther); }
+
+.pawprint { position: fixed; z-index: 110; width: 34px; height: 34px; fill: var(--panther); pointer-events: none; opacity: 0; animation: step 2.6s ease forwards; }
+@keyframes step { 0% { opacity: 0; } 10% { opacity: .95; } 70% { opacity: .95; } 100% { opacity: 0; } }
+
+.gunbarrel { position: fixed; inset: 0; z-index: 130; background: #000; overflow: hidden; pointer-events: none; animation: gbfade 4.2s forwards; }
+.gunbarrel .dot {
+  position: absolute; top: 50%; width: 120px; height: 120px; margin-top: -60px; border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 34%, #ddd 36%, #777 52%, #333 62%, #000 72%);
+  box-shadow: 0 0 40px rgba(255,255,255,.35);
+  animation: gbwalk 1.6s steps(5) forwards;
+}
+.gunbarrel .rifle {
+  position: absolute; left: 50%; top: 50%; width: 150vmax; height: 150vmax; margin: -75vmax 0 0 -75vmax; border-radius: 50%; opacity: 0;
+  background:
+    radial-gradient(circle, #fff 0 3.2%, #bbb 3.6%, transparent 4.2%),
+    radial-gradient(circle, transparent 0 4%, rgba(0,0,0,.2) 10%, #000 34%),
+    repeating-conic-gradient(from 0deg, #5a5a5a 0 7deg, #1c1c1c 7deg 15deg);
+  animation: gbrifle 1.4s 1.5s ease-out forwards;
+}
+@keyframes gbrifle { 0% { opacity: 0; transform: scale(.3) rotate(0); } 25% { opacity: 1; } 100% { opacity: 1; transform: scale(1) rotate(50deg); } }
+.gunbarrel .blood { position: absolute; left: 0; right: 0; top: 0; height: 0; background: linear-gradient(#8a0010, #c4001c); animation: gbblood .9s 2.5s ease-in forwards; }
+@keyframes gbwalk { from { left: -130px; } to { left: calc(50% - 60px); } }
+@keyframes gbblood { to { height: 100%; } }
+@keyframes gbfade { 0%, 88% { opacity: 1; } 100% { opacity: 0; } }
+
+.googly { position: absolute; top: 26%; left: 0; right: 0; display: flex; justify-content: center; gap: 12%; z-index: 2; pointer-events: none; }
+.googly i {
+  position: relative; width: 30%; aspect-ratio: 1; border-radius: 50%; background: #fff; border: 2px solid #111;
+  box-shadow: 0 2px 6px rgba(0,0,0,.5); animation: pop .4s cubic-bezier(.3,1.8,.5,1) both;
+}
+.googly i::after {
+  content: ""; position: absolute; width: 46%; height: 46%; left: 27%; top: 27%; border-radius: 50%; background: #111;
+  transform: translate(var(--px, 0), var(--py, 0)); transition: transform .12s;
+}
+@keyframes pop { from { transform: scale(0); } }
+body.verse { animation: verse 2.2s ease-in-out; }
+@keyframes verse { 0% { filter: none; } 25% { filter: hue-rotate(120deg) saturate(1.6); } 50% { filter: hue-rotate(240deg) invert(.1); } 75% { filter: hue-rotate(320deg) saturate(1.4); } 100% { filter: none; } }
+.bagel {
+  position: fixed; left: 50%; top: 50%; z-index: 125; width: 220px; height: 220px; margin: -110px 0 0 -110px; border-radius: 50%; pointer-events: none;
+  background:
+    radial-gradient(circle, transparent 0 22%, #000 23% 100%),
+    conic-gradient(from 0deg, #000, #222, #000);
+  -webkit-mask: radial-gradient(circle, transparent 0 22%, #000 23% 70%, transparent 71%);
+          mask: radial-gradient(circle, transparent 0 22%, #000 23% 70%, transparent 71%);
+  animation: bagel 2.2s ease-in forwards;
+}
+.bagel::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, #f4ead6 0 1.5px, transparent 2px) 0 0 / 18px 18px, radial-gradient(circle, #c9a24a 0 1.5px, transparent 2px) 9px 9px / 18px 18px; }
+@keyframes bagel { 0% { transform: scale(0) rotate(0); } 40% { transform: scale(1) rotate(200deg); } 100% { transform: scale(6) rotate(720deg); opacity: 0; } }
+
+body.telekinesis .frame { animation: levitate 2.4s ease-in-out infinite; }
+body.telekinesis .film:nth-child(3n+1) .frame { animation-delay: -.8s; }
+body.telekinesis .film:nth-child(3n+2) .frame { animation-delay: -1.6s; }
+@keyframes levitate { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-16px) rotate(1.5deg); } }
+main.timewarp { animation: timewarp 2.4s ease-in-out; }
+@keyframes timewarp { 0%,100% { transform: none; } 20% { transform: translateX(-60px); } 45% { transform: translateX(40px); } 65% { transform: translateX(0) scale(1.03); } 80% { transform: rotate(-2deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .gunbarrel, .bagel, .pawprint { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="theatre">
+  <svg class="hills" viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#2e1a3d" d="M0 110V70C160 30 320 20 470 46s250 40 380 12 260-40 350-18v70z"/>
+    <path fill="#1d1230" d="M0 110V92c200-30 420-34 620-12s400 10 580-14v44z"/>
+    <!-- the lamppost on the hill -->
+    <g fill="#120b1f"><rect x="905" y="30" width="3" height="40"/><rect x="900" y="68" width="13" height="4" rx="1"/><path d="M901 30h11l-2-7h-7z"/></g>
+    <circle cx="906.5" cy="26" r="3" fill="#ffe7a8"/><circle cx="906.5" cy="26" r="9" fill="#ffe7a8" opacity=".25"/>
+  </svg>
+  <div class="valance"></div>
+  <div class="curtain l"></div><div class="curtain r"></div>
+  <div class="marquee">
+    <div class="bulbs t"></div>
+    <p class="now">Now Showing</p>
+    <h1>What Are Jacob <span class="amp">&amp;</span> Mahima <em>going to watch?</em></h1>
+    <p class="billing"><b>Starring</b> their Letterboxd watchlists &middot; <b>with</b> everything they can stream tonight</p>
+    <div class="bulbs b"></div>
+  </div>
+  <div class="boxoffice">
+    <button class="ticket" id="spin" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="6.5" r="1.6"/><circle cx="12" cy="17.5" r="1.6"/><circle cx="6.5" cy="12" r="1.6"/><circle cx="17.5" cy="12" r="1.6"/></svg>
+      Spin the reel
+    </button>
+    <a class="ticket red" id="refresh" href="__REFRESH_URL__" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>
+      Refresh the programme
+    </a>
+    <p class="updated" id="updated"></p>
+  </div>
+</header>
+<div class="barrel" id="barrel" aria-hidden="true"></div>
+
+<main>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Whose list">
+      <button type="button" data-who="all" aria-pressed="true">Everyone</button>
+      <button type="button" data-who="Jacob" aria-pressed="false">Jacob</button>
+      <button type="button" data-who="Mahima" aria-pressed="false">Mahima</button>
+      <button type="button" data-who="both" aria-pressed="false">Both</button>
+    </div>
+    <input class="search" id="q" type="search" placeholder="Are you watching closely?" aria-label="Search films">
+  </div>
+  <div id="programme"></div>
+</main>
+
+<div class="meadow">
+  <svg viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="currentColor" opacity=".35" d="M0 140V92c120-26 230-30 360-14s260 22 400-4 300-30 440-8v74z"/>
+    <path fill="currentColor" opacity=".6" d="M0 140v-30c160-24 330-20 520 2s380 14 520-8 140-6 160-4v40z"/>
+    <g id="flowers"></g>
+  </svg>
+  <button class="paw" id="paw" type="button" aria-label="A pink paw print">
+    <svg viewBox="0 0 24 24"><ellipse cx="12" cy="16" rx="5.5" ry="4.5"/><ellipse cx="5" cy="10" rx="2.2" ry="2.8"/><ellipse cx="9.3" cy="5.6" rx="2.2" ry="2.8"/><ellipse cx="14.7" cy="5.6" rx="2.2" ry="2.8"/><ellipse cx="19" cy="10" rx="2.2" ry="2.8"/></svg>
+  </button>
+</div>
+<footer class="theend">
+  <div class="fin-row">
+    <div class="fin">The End</div>
+    <button class="top" id="top" type="button" aria-label="A spinning top">
+      <svg viewBox="0 0 26 34" aria-hidden="true"><g class="spin"><rect x="11.5" y="0" width="3" height="8" rx="1.2" fill="#6d4c2a"/><path d="M2 12c0-3 5-5 11-5s11 2 11 5c0 6-6 14-11 20C8 26 2 18 2 12z" fill="#8a8f96"/><path d="M2 12c0-3 5-5 11-5s11 2 11 5" fill="none" stroke="#c9ced4" stroke-width="1.6"/></g></svg>
+    </button>
+  </div>
+  <p>Watchlists from Letterboxd &middot; where-to-watch from JustWatch (US) &middot; refreshed every Sunday</p>
+</footer>
+
+<dialog id="feature">
+  <div class="feature">
+    <button class="x" type="button" aria-label="Close" id="close">&times;</button>
+    <p class="now">Tonight's Feature</p>
+    <div id="featureBody"></div>
+    <div class="row"><button class="ticket" type="button" id="again">Spin again</button></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const DATA = __DATA__;
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const state = { who: "all", svc: null, q: "", eyes: false };
+
+// Lines from the films the two of you gave five stars.
+const QUOTES = [
+  ["I'm gonna make him an offer he can't refuse.", "The Godfather"],
+  ["Here's to the ones who dream.", "La La Land"],
+  ["Are you watching closely?", "The Prestige"],
+  ["Why so serious?", "The Dark Knight"],
+  ["How do you like them apples?", "Good Will Hunting"],
+  ["I'll have what she's having.", "When Harry Met Sally"],
+  ["Sell me this pen.", "The Wolf of Wall Street"],
+  ["Do I look like I give a damn?", "Casino Royale"],
+  ["Do not go gentle into that good night.", "Interstellar"],
+  ["Keep the change, ya filthy animal.", "Home Alone"],
+  ["Please, be kind. Especially when we don't know what's going on.", "Everything Everywhere All at Once"],
+  ["I would like to buy a hamburger.", "The Pink Panther"],
+  ["How can you not be romantic about baseball?", "Moneyball"],
+  ["Let's do the time warp again.", "The Rocky Horror Picture Show"],
+  ["As far back as I can remember, I always wanted to be a gangster.", "Goodfellas"],
+  ["Remember me.", "Coco"],
+  ["We need to go deeper.", "Inception"],
+  ["The D is silent.", "Django Unchained"],
+  ["Call it, friendo.", "No Country for Old Men"],
+  ["All is well.", "3 Idiots"],
+  ["Even though you're small, you can do a lot.", "Matilda"],
+  ["You can't stop the beat.", "Hairspray"],
+  ["Anyone with a heartbeat.", "Ocean's Eleven"],
+  ["I wanna be like you guys when I grow up.", "Superbad"],
+  ["It's just a jump to the left.", "The Rocky Horror Picture Show"],
+];
+const pickQuote = () => QUOTES[Math.floor(Math.random() * QUOTES.length)];
+
+const SPRIG = `<svg class="sprig" viewBox="0 0 180 34" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+  <path d="M8 17h164"/><path d="M60 17c8-10 18-12 30-12M120 17c-8 8-18 11-30 11"/>
+  <ellipse cx="44" cy="11" rx="7" ry="3" transform="rotate(-25 44 11)" fill="currentColor" opacity=".35"/>
+  <ellipse cx="136" cy="23" rx="7" ry="3" transform="rotate(-25 136 23)" fill="currentColor" opacity=".35"/>
+  <ellipse cx="70" cy="23" rx="6" ry="2.6" transform="rotate(20 70 23)" fill="currentColor" opacity=".35"/>
+  <g fill="#c98b8b" stroke="none"><circle cx="90" cy="17" r="3.4"/><circle cx="90" cy="10.5" r="3"/><circle cx="96.2" cy="15" r="3"/><circle cx="93.8" cy="22.3" r="3"/><circle cx="86.2" cy="22.3" r="3"/><circle cx="83.8" cy="15" r="3"/></g>
+  <circle cx="90" cy="16.6" r="2" fill="#e8c46a" stroke="none"/>
+</svg>`;
+const PAW = `<svg viewBox="0 0 24 24"><ellipse cx="12" cy="16" rx="5.5" ry="4.5"/><ellipse cx="5" cy="10" rx="2.2" ry="2.8"/><ellipse cx="9.3" cy="5.6" rx="2.2" ry="2.8"/><ellipse cx="14.7" cy="5.6" rx="2.2" ry="2.8"/><ellipse cx="19" cy="10" rx="2.2" ry="2.8"/></svg>`;
+
+// Updated time + refresh link
+const upd = new Date(DATA.updated);
+$("#updated").textContent = "Programme printed " + upd.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" }) + " at " + upd.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+const refresh = $("#refresh");
+if (!refresh.getAttribute("href") || refresh.getAttribute("href").startsWith("__")) refresh.hidden = true;
+
+$("#barrel").innerHTML = "<i></i>".repeat(40);
+
+// Meadow flowers (marigolds for Coco among them)
+(() => {
+  const cols = ["#c98b8b", "#e8c46a", "#f4ead6", "#b97878", "#d9a6c4", "#f08a24"];
+  let out = "";
+  for (let i = 0; i < 46; i++) {
+    const x = (i * 263) % 1200 + 8, h = 30 + ((i * 37) % 50), y = 140 - h, c = cols[i % cols.length], r = 3 + (i % 3);
+    out += `<path d="M${x} 140q${i % 2 ? 4 : -4} -${h / 2} 0 -${h}" stroke="currentColor" stroke-width="1.3" fill="none"/>`;
+    out += `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/><circle cx="${x}" cy="${y}" r="${r / 2.6}" fill="#e8c46a"/>`;
+  }
+  $("#flowers").innerHTML = out;
+})();
+
+const matchWho = f => state.who === "all" ? true : state.who === "both" ? f.lists.length > 1 : f.lists.includes(state.who);
+const matchQ = f => !state.q || f.title.toLowerCase().includes(state.q);
+const visible = () => DATA.films.filter(f => matchWho(f) && matchQ(f));
+const byPick = (a, b) => (b.lists.length - a.lists.length) || a.title.localeCompare(b.title);
+const isPanther = f => /pink panther/i.test(f.title);
+
+function picks(f) {
+  if (f.lists.length > 1) return `<span class="pick both" title="I'll have what she's having.">Both of you</span>`;
+  return f.lists.map(l => `<span class="pick ${esc(l)}">${esc(l)}'s pick</span>`).join("");
+}
+function links(list, cls = "", max = 99) {
+  return list.slice(0, max).map(o => `<a class="${cls}" href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.name)}</a>`).join("");
+}
+function card(f, kind) {
+  const img = f.poster ? `<img loading="lazy" src="${esc(f.poster)}" alt="" data-t="${esc(f.title)}" onerror="posterFail(this)">` : `<span class="blank">${esc(f.title)}</span>`;
+  let where = "", note = "";
+  if (kind === "mine") where = links(f.mine, "mine");
+  if (kind === "free") where = links(f.free, "", 4);
+  if (kind === "other") where = links(f.other, "", 4);
+  if (kind === "box") { where = links(f.rent.length ? f.rent : f.buy, "", 3); note = f.rent.length ? "to rent" : "to buy"; }
+  if (isPanther(f)) note = "Mahima's Steve Martin" + (note ? " · " + note : "");
+  return `<article class="film${isPanther(f) ? " panther" : ""}">
+    <a class="frame" href="${esc(f.justwatch || f.letterboxd)}" target="_blank" rel="noopener" aria-label="${esc(f.title)} on JustWatch">${img}</a>
+    <div class="stub">
+      <h3><a href="${esc(f.letterboxd)}" target="_blank" rel="noopener">${esc(f.title)}</a>${f.year ? `<span class="yr">(${f.year})</span>` : ""}</h3>
+      <div class="picks">${picks(f)}</div>
+      <div class="where">${where}</div>
+      ${note ? `<p class="note">${note}</p>` : ""}
+    </div>
+  </article>`;
+}
+function grid(films, kind) {
+  return films.length ? `<div class="grid">${films.sort(byPick).map(f => card(f, kind)).join("")}</div>` : `<p class="empty">Nothing on this reel.</p>`;
+}
+function posterFail(img) {
+  const s = document.createElement("span"); s.className = "blank"; s.textContent = img.dataset.t; img.replaceWith(s);
+}
+const head = (no, title, sub) => `<div class="reel-head"><span class="reel-no">${no}</span><h2>${title}</h2><p class="sub">${sub}</p></div>`;
+const fold = (no, title, sub, body) => SPRIG + `<details class="reel"><summary>${head(no, title, sub)}<div style="text-align:center"><span class="toggle"><span class="o">Show the bill</span><span class="c">Hide</span></span></div></summary><div style="margin-top:22px">${body}</div></details>`;
+
+function render() {
+  const films = visible();
+  const has = (f, k) => f[k]?.length > 0;
+  const mine = films.filter(f => has(f, "mine"));
+  const free = films.filter(f => !has(f, "mine") && has(f, "free"));
+  const other = films.filter(f => !has(f, "mine") && !has(f, "free") && has(f, "other"));
+  const box = films.filter(f => !has(f, "mine") && !has(f, "free") && !has(f, "other") && (has(f, "rent") || has(f, "buy")));
+  const wanted = films.filter(f => !["mine", "free", "other", "rent", "buy"].some(k => has(f, k)));
+
+  const counts = Object.fromEntries(DATA.services.map(s => [s, mine.filter(f => f.mine.some(m => m.name === s)).length]));
+  if (state.svc && !counts[state.svc]) state.svc = null;
+  const shown = state.svc ? mine.filter(f => f.mine.some(m => m.name === state.svc)) : mine;
+
+  let html = SPRIG + `<section class="reel">${head("Reel I", "Now Showing", `<b>${mine.length}</b> on our services, ready tonight`)}
+    <div class="chips" role="group" aria-label="Filter by service">
+      <button class="chip" type="button" data-svc="" aria-pressed="${!state.svc}">All<span>${mine.length}</span></button>
+      ${DATA.services.filter(s => counts[s]).map(s => `<button class="chip" type="button" data-svc="${esc(s)}" aria-pressed="${state.svc === s}">${esc(s)}<span>${counts[s]}</span></button>`).join("")}
+    </div>
+    ${grid(shown, "mine")}</section>`;
+  html += SPRIG + `<section class="reel">${head("Reel II", "Free Admission", `<b>${free.length}</b> free with ads elsewhere. Kanopy &amp; Hoopla just need a library card`)}${grid(free, "free")}</section>`;
+  html += fold("Reel III", "Playing Across Town", `<b>${other.length}</b> on services we don't have`, grid(other, "other"));
+  html += fold("Reel IV", "At the Box Office", `<b>${box.length}</b> to rent or buy only`, grid(box, "box"));
+  html += SPRIG + `<section class="reel"><div class="wanted">
+      <div class="w">WANTED</div>
+      <div class="w2">Not streaming anywhere &mdash; yet</div>
+      ${wanted.length ? `<ul>${wanted.sort(byPick).map(f => `<li><a href="${esc(f.justwatch || f.letterboxd)}" target="_blank" rel="noopener">${esc(f.title)}</a> <span class="yr">${f.year ? "(" + f.year + ")" : ""}</span>${f.unmatched ? `<span class="miss">couldn't find on JustWatch</span>` : ""}</li>`).join("")}</ul>` : `<p class="reward">No outlaws on this reel.</p>`}
+      <p class="reward">Reward: one evening, popcorn included.</p>
+    </div></section>`;
+
+  $("#programme").innerHTML = html;
+  if (state.eyes) addEyes();
+}
+
+document.querySelector(".seg").addEventListener("click", e => {
+  const b = e.target.closest("button[data-who]"); if (!b) return;
+  state.who = b.dataset.who;
+  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+});
+$("#programme").addEventListener("click", e => {
+  const c = e.target.closest(".chip"); if (!c) return;
+  state.svc = c.dataset.svc || null; render();
+});
+
+// Spin the reel: random pick from what's on our services (respects filters)
+const dlg = $("#feature");
+function spin() {
+  let pool = visible().filter(f => f.mine?.length);
+  if (state.svc) pool = pool.filter(f => f.mine.some(m => m.name === state.svc));
+  if (!pool.length) pool = DATA.films.filter(f => f.mine?.length);
+  if (!pool.length) return;
+  const f = pool[Math.floor(Math.random() * pool.length)], [line, film] = pickQuote();
+  $("#featureBody").innerHTML = (f.poster ? `<img src="${esc(f.poster)}" alt="" onerror="this.remove()">` : "") +
+    `<h3>${esc(f.title)}</h3><div class="yr">${f.year || ""}</div><div class="picks">${picks(f)}</div><div class="where">${links(f.mine, "mine")}</div>` +
+    `<p class="quote">&ldquo;${esc(line)}&rdquo;<cite>${esc(film)}</cite></p>`;
+  if (dlg.open) { const ft = $(".feature", dlg); ft.style.animation = "none"; ft.offsetWidth; ft.style.animation = ""; }
+  else dlg.showModal();
+}
+$("#spin").addEventListener("click", spin);
+$("#again").addEventListener("click", spin);
+$("#close").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+/* ───────── Easter eggs ─────────
+   Search box or keyboard: clouseau · hamburger · steve martin · everything · bagel · 007 · bond ·
+   matilda · time warp · sell me this pen · deeper · offer · city of stars · all is well.
+   Taps: the pink paw in the meadow, "Everyone" three times fast, the gun-barrel strip, the spinning top. */
+let toastTimer;
+function toast(line, film, cls = "") {
+  const t = $("#toast");
+  t.className = "toast " + cls;
+  t.innerHTML = `&ldquo;${esc(line)}&rdquo;` + (film ? `<cite>${esc(film)}</cite>` : "");
+  requestAnimationFrame(() => t.classList.add("show"));
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 4200);
+}
+const once = (el, ms) => setTimeout(() => el.remove(), ms);
+
+function panther() {
+  // Paw prints tiptoe across the screen, Clouseau none the wiser.
+  const w = innerWidth, h = innerHeight, n = 14;
+  for (let i = 0; i < n; i++) {
+    const p = document.createElement("div");
+    p.innerHTML = PAW; const s = p.firstChild; s.classList.add("pawprint");
+    const t = i / (n - 1), x = 20 + t * (w - 70), y = h - 80 - t * (h * .55) + (i % 2 ? -18 : 18);
+    s.style.left = x + "px"; s.style.top = y + "px"; s.style.transform = `rotate(${70 - 25 * t}deg)`;
+    s.style.animationDelay = i * .14 + "s";
+    document.body.appendChild(s); once(s, 2600 + i * 140);
+  }
+  toast("I would like to buy a hamburger.", "The Pink Panther · for Mahima", "pink");
+}
+
+function addEyes() {
+  document.querySelectorAll(".frame").forEach(fr => {
+    if (!fr.querySelector(".googly")) fr.insertAdjacentHTML("beforeend", `<span class="googly" aria-hidden="true"><i></i><i></i></span>`);
+  });
+}
+function everything() {
+  state.eyes = !state.eyes;
+  document.body.classList.remove("verse"); void document.body.offsetWidth; document.body.classList.add("verse");
+  const b = document.createElement("div"); b.className = "bagel"; document.body.appendChild(b); once(b, 2300);
+  if (state.eyes) { addEyes(); toast("In another universe, we already picked a movie.", "Everything Everywhere All at Once"); }
+  else { document.querySelectorAll(".googly").forEach(g => g.remove()); toast("Please, be kind. Especially when we don't know what's going on.", "Everything Everywhere All at Once"); }
+}
+let raf;
+addEventListener("pointermove", e => {
+  if (!state.eyes || raf) return;
+  raf = requestAnimationFrame(() => {
+    raf = null;
+    document.querySelectorAll(".googly i").forEach(eye => {
+      const r = eye.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      const a = Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)), d = r.width * .22;
+      eye.style.setProperty("--px", Math.cos(a) * d + "px"); eye.style.setProperty("--py", Math.sin(a) * d + "px");
+    });
+  });
+});
+
+function bond() {
+  const g = document.createElement("div"); g.className = "gunbarrel"; g.innerHTML = `<div class="rifle"></div><div class="dot"></div><div class="blood"></div>`;
+  document.body.appendChild(g); once(g, 4300);
+  setTimeout(() => toast("Shaken, not stirred.", "Jacob's Bond"), 3500);
+}
+function telekinesis() {
+  document.body.classList.add("telekinesis");
+  setTimeout(() => document.body.classList.remove("telekinesis"), 7000);
+  toast("Even though you're small, you can do a lot.", "Matilda");
+}
+function timewarp() {
+  const m = $("main"); m.classList.remove("timewarp"); void m.offsetWidth; m.classList.add("timewarp");
+  toast("It's just a jump to the left…", "The Rocky Horror Picture Show");
+}
+
+const EGGS = [
+  [["clouseau", "pink panther", "steve martin", "hamburger", "inspector"], panther, true],
+  [["everything", "bagel", "googly", "jobu", "evelyn"], everything],
+  [["007", "james bond", "shaken"], bond],
+  [["matilda", "telekinesis"], telekinesis, true],
+  [["time warp", "timewarp"], timewarp],
+  [["sell me this pen"], () => toast("Sell me this pen.", "The Wolf of Wall Street")],
+  [["deeper", "dream within"], () => toast("We need to go deeper.", "Inception")],
+  [["offer"], () => toast("I'm gonna make him an offer he can't refuse.", "The Godfather")],
+  [["city of stars", "mia", "sebastian"], () => toast("Here's to the ones who dream.", "La La Land")],
+  [["aal izz well", "all is well"], () => toast("All is well.", "3 Idiots")],
+  [["filthy animal"], () => toast("Keep the change, ya filthy animal.", "Home Alone")],
+  [["them apples"], () => toast("How do you like them apples?", "Good Will Hunting")],
+];
+function checkEgg(text) {
+  text = text.toLowerCase();
+  for (const egg of EGGS) if (egg[0].some(w => text.endsWith(w))) { egg[1](); return { keep: !!egg[2] }; }
+  return null;
+}
+
+$("#q").addEventListener("input", e => {
+  state.q = e.target.value.trim().toLowerCase();
+  render();
+  const egg = checkEgg(state.q);
+  if (egg && !egg.keep) setTimeout(() => { e.target.value = ""; state.q = ""; render(); }, 600);
+});
+let typed = "";
+addEventListener("keydown", e => {
+  if (e.target.closest("input, textarea") || e.key.length !== 1) return;
+  typed = (typed + e.key.toLowerCase()).slice(-24);
+  if (checkEgg(typed)) typed = "";
+});
+
+$("#paw").addEventListener("click", panther);
+$("#barrel").addEventListener("click", bond);
+$("#top").addEventListener("click", () => toast("Is it still spinning? Don't look.", "Inception"));
+let taps = [];
+$(".seg [data-who=all]").addEventListener("click", () => {
+  const now = Date.now(); taps = taps.filter(t => now - t < 1500); taps.push(now);
+  if (taps.length >= 3) { taps = []; everything(); }
+});
+
+render();
+</script>
+</body>
+</html>
